@@ -40,4 +40,4 @@ function afficherSapin(n) {
     }   
 }
 
-afficherSapin(10)
+afficherSapin(5);
