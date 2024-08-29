@@ -4,16 +4,18 @@
 <head>
     <meta charset="utf-8">
     <title>Motus</title>
+    <script src="script.js"></script>
 </head>
 
 <body>
-    <input id="word" />
+    <input id="word" value=""/>
     <button onclick="guess()">Ok</button>
-    <p id="try"></p>
-    <p id="well"></p>
-    <p id="miss"></p>
-    <p id="not"></p>
-    <p id="win"></p>
+    <p id="tentatives"></p>
+    <p id="try"></p> <!-- Tentative mot -->
+    <p id="well" class="wrong"></p> <!-- Bien placé: A, B, C -->
+    <p id="miss" class="wrong"></p> <!-- Mal placé: A, B, C -->
+    <p id="not" class="wrong"></p> <!-- Pas dans le mot: A, B, C -->
+    <p id="win"></p> <!-- Vous avez gagné -->
 </body>
 
 </html>
