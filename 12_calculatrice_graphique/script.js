@@ -3,93 +3,61 @@ const operatorButtons = document.querySelectorAll(".operator");
 const optionsButtons = document.querySelectorAll(".options");
 const resetButton = document.getElementById("reset");
 
-let result = 0;
+let result = "";
 
 function buttonClicked() {
-	numberButtons.forEach((button) => {
-		button.addEventListener("click", () => {
-			document.getElementById("result").innerHTML = button.value;
-			result = parseInt(button.value);
-			console.log(
-				"🪼 button clicked is:",
-				button.value,
-				"AND result is:",
-				result
-			);
-		});
-	});
-}
+    numberButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            result += button.value;
+            document.getElementById("result").innerHTML = result;
+            console.log('🪼 button clicked is:', button.value, 'AND result is:', result);
+        });
+    });
+};
 buttonClicked();
+
 
 // ---------- DISPLAY RESULTS IN OUTPUT DIV ---------- //
 
 function displayResult() {
-	operatorButtons.forEach((button) => {
-		button.addEventListener("click", () => {
-			if ((button.id = "addition")) {
-				numberButtons.forEach((button) => {
-					button.addEventListener("click", () => {
-						document.getElementById("result").innerHTML = button.value;
-						result = parseInt(button.value);
-						console.log(
-							"🪼 button clicked is:",
-							button.value,
-							"AND result is:",
-							result
-						);
-					});
-				});
-				result += parseInt(button.value);
-				console.log(
-					"🐢 button clicked is:",
-					button.value,
-					"AND result is:",
-					result
-				);
-			} else if ((button.id = "substraction")) {
-				result = result - parseInt(button.value);
-				console.log(
-					"🐢 button clicked is:",
-					button.value,
-					"AND result is:",
-					result
-				);
-			} else if ((button.id = "multiplication")) {
-				result = result * parseInt(button.value);
-				console.log(
-					"🐢 button clicked is:",
-					button.value,
-					"AND result is:",
-					result
-				);
-			} else if ((button.id = "division")) {
-				result = result / parseInt(button.value);
-				console.log(
-					"🐢 button clicked is:",
-					button.value,
-					"AND result is:",
-					result
-				);
-			} else {
-				console.log("Je suis dans else");
-			}
-		});
-	});
+    operatorButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if ((button.value == "+")) {
+                console.log("buttonClicked is:", buttonClicked());
+                result += "+";
+                console.log('🐢 button clicked is:', button.value, 'AND result is:', result);
+            }
+            else if ((button.value == "-")) {
+                console.log('🐢 button clicked is:', button.value, 'AND result is:', result);
+            }
+            else if ((button.value == "*")) {
+                console.log('🐢 button clicked is:', button.value, 'AND result is:', result);
+            }
+            else if ((button.value == "÷")) {
+                console.log('🐢 button clicked is:', button.value, 'AND result is:', result);
+            }
+            else if ((button.value == "=")) {
+                result = result
+                console.log('🐢 button clicked is:', button.value, 'AND result is:', result);
+            }
+            else {
+                console.log("Je suis dans else")
+            }
+        })
+    });
 }
 displayResult();
+
 
 // ---------- RESET RESULTS ---------- //
 
 function reset() {
-	resetButton.addEventListener("click", () => {
-		result = 0;
-		document.getElementById("result").innerHTML = result;
-		console.log(
-			"🦐 button clicked is:",
-			resetButton.value,
-			"AND result is:",
-			result
-		);
-	});
+    resetButton.addEventListener("click", () => {
+        result = "";
+        document.getElementById("result").innerHTML = 0;
+        console.log('🦐 button clicked is:', resetButton.value, 'AND result is:', result);
+    })
 }
 reset();
+
+
