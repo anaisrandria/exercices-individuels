@@ -11,10 +11,11 @@ function guess() {
     if (result === true) {
         document.getElementById("try").innerText = `Votre mot: ${word}`
         document.getElementById("win").innerText = 'Vous avez gagné';
-        document.getElementById("well").remove();
-        document.getElementById("miss").remove();
-        document.getElementById("not").remove();
+        // document.getElementById("well").remove();
+        // document.getElementById("miss").remove();
+        // document.getElementById("not").remove();
         // document.getElementsByClassName("wrong").remove();
+        document.querySelectorAll(".wrong").remove();
     } else {
         document.getElementById("word").value = ''; // valeur de 'word' par défaut
         document.getElementById("try").innerText = `Votre mot: ${word}`; // remplace le texte du paragraphe avec l'id "try" par la valeur de l'input
