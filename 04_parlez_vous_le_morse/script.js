@@ -25,8 +25,7 @@ const latinToMorse = {
 	'X':'-..-',
 	'Y':'-.--',
 	'Z':'--..',
-	' ':' '
-}
+};
 
 const morseToLatin = {
 	'-': "T",
@@ -55,62 +54,90 @@ const morseToLatin = {
 	'...': "S",
 	'...-': "V",
 	'....': "H",
-	'/':" "
-  }
+  };
+
+const inputEncode = document.getElementById("input-encode");
+const inputDecode = document.getElementById("input-decode");
+const buttonEncode = document.getElementById("button-encode");
+const buttonDecode = document.getElementById("button-decode");
+
+let valueEncode = "";
+let valueDecode = "";
+
+// ---------- ENCODE FUNCTION ---------- // 
+
+function getLatinCharacterList(input) {
+	let result = input.split("");
+	return result;
+};
+
+function translateLatinCharacter(character) {
+	let morse = latinToMorse[character];
+	return morse;
+};
+
+function encode(input) {
+	let morseText = "";
+	let separateText = getLatinCharacterList(input.toUpperCase());
+
+	for (let i = 0; i < separateText.length; i++) {
+		if (separateText[i] == " ") {
+			morseText += "/ ";
+		} else {
+			morseText += translateLatinCharacter(input[i].toUpperCase()) + " ";
+		}
+	}
+	return morseText;
+};
+
+inputEncode.addEventListener("input", () => {
+	encode(inputEncode.value);
+	valueEncode = inputEncode.value;
+	if (inputEncode.value.length == 0) {
+		document.getElementById("output-encode").innerHTML = null;
+	}
+}); 
+
+buttonEncode.addEventListener("click", () => {
+	document.getElementById("output-encode").innerHTML = encode(valueEncode);
+});
 
 
-// Prend du texte en paramètre et retourne un tableau contenant chaque caractère individuellement
-function getLatinCharacterList(text) {
-    let result = text.split("");
-    return result;
-}
+// ---------- DECODE FUNCTION ---------- //
 
 // Prend du morse en paramètre et retourne un tableau contenant chaque caractère individuellement
-function getMorseCharactersList(text) {
-	let result = text.split(" ");
-	console.log(result)
-	return result
-}
-
-// Prend une lettre en paramètre et renvoie sa correspondance en morse
-function translateLatinCharacter(character) {
-    // 1) Trouver dans le dictionnaire la valeur qui correspond à la lettre (clé) qu'on veut
-    let morse = latinToMorse[character];
-    // 2) Retourner l'équivalent en morse
-    return morse;
-}
+function getMorseCharactersList(input) {
+	let result = input.split(" ");
+	return result;
+};
 
 function translateMorseCharactere(morse) {
-	let latinCharacter = morseToLatin[morse]
-	return latinCharacter
-}
-
-
-function encode(text) {
-	let morseText = ""
-	let separateText = getLatinCharacterList(text)
-	console.log(separateText)
-	
-	for (let i=0; i < separateText.length; i++) {
-		morseText += translateLatinCharacter(text[i]) + " "
-	}
-	
-	return morseText
-}
-
-console.log(encode("HELLO WORLD"))
-
+	let latinCharacter = morseToLatin[morse];
+	return latinCharacter;
+};
 
 function decode(morse) {
-	let latinText = ""
-	let morseText = getMorseCharactersList(morse)
-	// console.log(morseText)
+	let latinText = "";
+	let morseText = getMorseCharactersList(morse);
 
 	for (let i=0; i < morseText.length; i++) {
-		latinText += translateMorseCharactere(morseText[i]) + ""
+		if (morseText[i] == "/") {
+			latinText += " ";
+		} else {
+			latinText += translateMorseCharactere(morseText[i]) + "";
+		}
 	}
+	return latinText;
+};
 
-	return latinText
-}
+inputDecode.addEventListener("input", () => {
+	encode(inputDecode.value);
+	valueDecode = inputDecode.value;
+	if (inputDecode.value.length == 0) {
+		document.getElementById("output-decode").innerHTML = null;
+	};
+});
 
-console.log(decode(".... . .-.. .-.. --- / .-- --- .-. .-.. -.."))
+buttonDecode.addEventListener("click", () => {
+	document.getElementById("output-decode").innerHTML = decode(valueDecode);
+});
