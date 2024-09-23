@@ -81,8 +81,10 @@ function encode(input) {
 	let separateText = getLatinCharacterList(input.toUpperCase());
 
 	for (let i = 0; i < separateText.length; i++) {
-		if (separateText[i] == " ") {
+		if (separateText[i] == " " || separateText[i] == "-" || separateText[i] == ",") {
 			morseText += "/ ";
+		} else if (separateText[i] == "?") {
+			morseText += "?";
 		} else {
 			morseText += translateLatinCharacter(input[i].toUpperCase()) + " ";
 		}
@@ -123,6 +125,8 @@ function decode(morse) {
 	for (let i=0; i < morseText.length; i++) {
 		if (morseText[i] == "/") {
 			latinText += " ";
+		} else if (morseText[i] == "?") {
+			latinText += "?";
 		} else {
 			latinText += translateMorseCharactere(morseText[i]) + "";
 		}
