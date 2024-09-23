@@ -20,15 +20,16 @@ h3 {
 
 #container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 20px;
     color: white;
     text-align: center;
+    margin: 20px;
 }
 
 .box {
-    width: 80%;
+    width: 80vw;
     padding: 10px 10px 50px 10px;
     background-color: black;
     border-radius: 10px;
@@ -67,4 +68,16 @@ button:hover {
     border: 1px solid black;
     color: black;
     transition-duration: 0.1s;
+}
+
+@media screen  and (max-width: 940px) {
+    #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        color: white;
+        text-align: center;
+        margin: 20px;
+    }
 }
