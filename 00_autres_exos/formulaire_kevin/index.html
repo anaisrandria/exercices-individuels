@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Formulaire de contact</title>
+</head>
+<body>
+    <div id="main-container">
+        <h1>Contactez-nous</h1>
+        <div class="details-container">
+            <p>Nom</p>
+            <input type="text" class="input-details" id="name">
+            <p>Email</p>
+            <input type="text" class="input-details" id="email">
+            <p>Téléphone</p>
+            <input type="text" class="input-details" id="phone">
+        </div>
+        <div id="second-container">
+            <div id="subject">
+                <p>Sujet</p>
+                <select name="subject" class="select-subject">
+                    <option value="select-subject">-- Sélectionnez un sujet --</option>
+                    <option value="question">Question</option>
+                    <option value="avis">Avis</option>
+                </select>
+            </div>
+            <div id="notoriete">
+                <p>Comment nous avez-vous connus ? </p>
+                <div id="notoriete-options">
+                    <input type="checkbox" name="social-media" id="option1"><label for="option1">Réseaux sociaux</label>
+                    <input type="checkbox" name="friend" id="option2"><label for="option2">Un.e ami.e</label>
+                    <input type="checkbox" name="advertising" id="option3"><label for="option3">Publicité</label>
+                </div>
+            </div>
+        </div>
+        <div id="third-container">
+            <div id="student">
+                <p>Êtes-vous étudiant.e ?</p>
+                <input type="radio" name="answer" id="yes" class="radio-button" checked><label for="yes">Oui</label>
+                <input type="radio" name="answer" id="no" class="radio-button"><label for="no">Non</label>
+            </div>
+            <div id="message">
+                <p>Message</p>
+                <textarea type="text" row="5" id="message-input"></textarea>
+            </div>
+        </div>
+        <button id="submit">Envoyer</button>
+    </div>
+</body>
+</html>
