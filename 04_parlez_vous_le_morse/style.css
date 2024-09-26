@@ -1,18 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 * {
     border: none;
     margin: none;
-    font-family: Poppins;
+    font-family: 'Roboto';
 }
 
 /* body {
     font-family: Poppins;
 } */
 
-h1 {
+/* .title-container {
     text-align: center;
+    text-transform: uppercase;
     margin: 50px 0px 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    font-size: 2.5rem;
+    font-weight: 600;
+} */
+
+p {
+  text-shadow: 0 0 7px rgba(255,255,255,.3), 0 0 3px rgba(255,255,255,.3);
+}
+
+.title-container {
+  font-size: 2.26rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+    text-align: center;
+}
+
+.animation {
+  height:50px;
+  overflow:hidden;
+  margin-left: 1rem;
+}
+
+.animation span {
+    color: white;
+    background-color: black;
+}
+
+.animation > div > div {
+  padding: 0.25rem 0.75rem;
+  height:2.81rem;
+  margin-bottom: 2.81rem;
+  display:inline-block;
+}
+
+.animation div:first-child {
+  animation: text-animation 5s infinite;
+}
+
+.first div {
+    background-color: transparent;
+    font-weight: bold;
+    text-align: center;
+}
+.second div {
+    background-color: transparent;
+    color: black;
+}
+
+@keyframes text-animation {
+  0% {margin-top: 0;}
+  /* 10% {margin-top: 0;}
+  20% {margin-top: -5.62rem;}
+  30% {margin-top: -5.62rem;} */
+  40% {margin-top: -5.62rem;}
+  60% {margin-top: -5.62rem;}
+  /* 70% {margin-top: -5.62rem;}
+  80% {margin-top: -5.62rem;}
+  90% {margin-top: 0;} */
+  100% {margin-top: 0;}
 }
 
 h3 {

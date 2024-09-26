@@ -8,12 +8,22 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Parlez-vous le morse ?</h1>
+    <div class="title-container">
+        <!-- <p>Parlez-vous le</p> -->
+        <section class="animation">
+            <div class="first">
+                <div>do you <span>morse?</span></div>
+            </div>
+            <div class="second">
+                <div>-.. --- / -.-- --- ..- / <span>-- --- .-. ... . ?</span></div>
+            </div>
+        </section>
+    </div>
     <div id="container">
         <div class="box">
             <h3>Latin to morse</h3>
             <div class="input-button">
-                <textarea type="text" id="input-encode"></textarea>
+                <textarea type="text" id="input-encode">Write something...</textarea>
                 <button id="button-encode">Encode</button>
             </div>
             <p id="output-encode"> </p>
@@ -21,7 +31,7 @@
         <div class="box">
             <h3>Morse to latin</h3>
             <div class="input-button">
-                <textarea type="text" id="input-decode"></textarea>
+                <textarea type="text" id="input-decode">Traduction</textarea>
                 <button id="button-decode">Decode</button>
             </div>
             <p id="output-decode"> </p>
