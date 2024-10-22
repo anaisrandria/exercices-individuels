@@ -9,24 +9,32 @@ class Vaisseau:
     def getFeatures(self):
         print("Nom :", self.name)
         print("Type :", self.type)
-        print("Taille :", self.size)
+        print("Taille :", self.size, "mètres")
+        return (self.name, self.type, self.size)
 
 # Création d'une classe enfant
 class Croiseur(Vaisseau): 
-    def __init__(self, name, type, size, capacity):
+    def __init__(self, name, type, size, capacity, loading = 0):
         super().__init__(name, type, size)
         self.capacity = capacity
+        self.loading = loading
 
     def getCapacity(self):
         print("Capacité :", self.capacity, "hommes")
+        print("Chargement :", self.loading, "hommes")
+        return (self.capacity, self.loading)
 
-    def chargerTroupes(self, capacity):
-        self.capacity += capacity
-        print("New capacity (+", capacity, "):", self.capacity, "hommes")
+    def chargerTroupes(self, new_loading):
+        if (self.loading + new_loading <= self.capacity):
+            self.loading += new_loading
+            print("Nouveau chargement (+", new_loading, "hommes) :", self.loading, "hommes")
+        else: 
+            print("Nouveau chargement (+", new_loading, "hommes) : ❌ Dépassement de la capacité maximale")
+        return self.loading
 
-    def dechargerTroupes(self, capacity):
-        self.capacity -= capacity
-        print("New capacity (-", capacity, "):", self.capacity, "hommes")
+    def dechargerTroupes(self, new_loading):
+        self.loading -= new_loading
+        print("Nouveau chargement (-", new_loading, "hommes) :", self.loading, "hommes")
 
 # Création d'une classe enfant
 class Intercepteur(Vaisseau): 
@@ -36,12 +44,23 @@ class Intercepteur(Vaisseau):
     
     def getCanons(self):
         print("Nombre de canons :", self.nb_canon)
+        return (self.nb_canon)
 
     def tirer(self):
         print("Action : Tire !")
+        if self.nb_canon > 0:
+            self.nb_canon -= 1
+            print("Tirs restants :", self.nb_canon)
+        else: 
+            print(f"Vous n'avez plus de canons ! Rechargez votre {self.name}.")
 
     def recharger(self):
-        print("Action : Recharge !")
+        print("Action : Recharge")
+        if (self.nb_canon < 2):
+            self.nb_canon = 2
+            print("Tirs restants :", self.nb_canon)
+        else: 
+            print(f"Votre {self.name} est déjà chargé.")
 
 # Instanciation de classe
 acclamator = Croiseur("Acclamator", "Croiseur", 752, 700)
@@ -52,7 +71,9 @@ ywing = Intercepteur("Y-wing", "Intercepteur", 23, 2)
 # Appel des méthodes de l'instance Acclamator de type Croiseur
 acclamator.getFeatures()
 acclamator.getCapacity()
-acclamator.chargerTroupes(10)
+acclamator.chargerTroupes(600)
+acclamator.chargerTroupes(20)
+acclamator.chargerTroupes(100)
 acclamator.dechargerTroupes(10)
 print()
 
@@ -67,6 +88,12 @@ print()
 xwing.getFeatures()
 xwing.getCanons()
 xwing.tirer()
+xwing.tirer()
+xwing.tirer()
+xwing.tirer()
+xwing.recharger()
+xwing.recharger()
+xwing.tirer()
 xwing.recharger()
 print()
 
@@ -77,6 +104,17 @@ ywing.tirer()
 ywing.recharger()
 print()
 
+# Fonction qui prend un vaisseau en paramètre et affiche ses capacités
+def displayFeatures(vaisseau):
+    print("🚀 Afficher les caractéristiques du vaisseau")
+    if (isinstance(vaisseau, Vaisseau)):
+        vaisseau.getFeatures()
+        if (isinstance(vaisseau, Croiseur)):
+            vaisseau.getCapacity()
+            print()
+        elif (isinstance(vaisseau, Intercepteur)):
+            vaisseau.getCanons()
+            print()
 
-
-
+displayFeatures(corvette)
+displayFeatures(xwing)
