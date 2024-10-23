@@ -16,49 +16,49 @@ class Vaisseau:
 class Croiseur(Vaisseau): 
     def __init__(self, name, type, size, capacity, loading = 0):
         super().__init__(name, type, size)
-        self.capacity = capacity
-        self.loading = loading
+        self.__capacity = capacity
+        self.__loading = loading
 
     def getCapacity(self):
-        print("Capacité :", self.capacity, "hommes")
-        print("Chargement :", self.loading, "hommes")
-        return (self.capacity, self.loading)
+        print("Capacité :", self.__capacity, "hommes")
+        print("Chargement :", self.__loading, "hommes")
+        return (self.__capacity, self.__loading)
 
     def chargerTroupes(self, new_loading):
-        if (self.loading + new_loading <= self.capacity):
-            self.loading += new_loading
-            print("Nouveau chargement (+", new_loading, "hommes) :", self.loading, "hommes")
+        if (self.__loading + new_loading <= self.__capacity):
+            self.__loading += new_loading
+            print("Nouveau chargement (+", new_loading, "hommes) :", self.__loading, "hommes")
         else: 
             print("Nouveau chargement (+", new_loading, "hommes) : ❌ Dépassement de la capacité maximale")
-        return self.loading
+        return self.__loading
 
     def dechargerTroupes(self, new_loading):
-        self.loading -= new_loading
-        print("Nouveau chargement (-", new_loading, "hommes) :", self.loading, "hommes")
+        self.__loading -= new_loading
+        print("Nouveau chargement (-", new_loading, "hommes) :", self.__loading, "hommes")
 
 # Création d'une classe enfant
 class Intercepteur(Vaisseau): 
     def __init__(self, name, type, size, nb_canon):
         super().__init__(name, type, size)
-        self.nb_canon = nb_canon
+        self.__nb_canon = nb_canon
     
     def getCanons(self):
-        print("Nombre de canons :", self.nb_canon)
-        return (self.nb_canon)
+        print("Nombre de canons :", self.__nb_canon)
+        return (self.__nb_canon)
 
     def tirer(self):
         print("Action : Tire !")
-        if self.nb_canon > 0:
-            self.nb_canon -= 1
-            print("Tirs restants :", self.nb_canon)
+        if self.__nb_canon > 0:
+            self.__nb_canon -= 1
+            print("Tirs restants :", self.__nb_canon)
         else: 
             print(f"Vous n'avez plus de canons ! Rechargez votre {self.name}.")
 
     def recharger(self):
         print("Action : Recharge")
-        if (self.nb_canon < 2):
-            self.nb_canon = 2
-            print("Tirs restants :", self.nb_canon)
+        if (self.__nb_canon < 2):
+            self.__nb_canon = 2
+            print("Tirs restants :", self.__nb_canon)
         else: 
             print(f"Votre {self.name} est déjà chargé.")
 
