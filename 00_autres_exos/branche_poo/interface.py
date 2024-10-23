@@ -22,7 +22,8 @@ class Compte(ICompte):
         return self.balance
     
     def retirer(self, montant):
-        self.balance += montant # Attention : il faut ajouter le signe - avant chaque opération
+        """Attention : il faut ajouter le signe - avant chaque retrait"""
+        self.balance += montant
         print(f"Solde disponible après retrait ({montant}€) : {self.balance}€")
         return self.balance
     
@@ -73,6 +74,7 @@ monEpargne = Epargne(200)
 # Appel des méthodes
 print("🤑 MON COMPTE EN LIGNE 🤑")
 monCompte.deposer(100)
+print(monCompte.retirer.__doc__)
 monCompte.retirer(-20)
 monCompte.manipulateBalance(operations)
 monCompte.getBalance()
