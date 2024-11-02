@@ -40,7 +40,6 @@ class Croiseur(Vaisseau):
         else:
             print(f"\nMise à jour du chargement (+{loading}): ⛔️ Dépassement de la capacité maximale")
 
-    # Autres méthodes de classe
     def chargerTroupes(self, new_loading):
         if self.__loading + new_loading <= self.__capacity:
             self.__loading += new_loading
@@ -59,12 +58,14 @@ class Intercepteur(Vaisseau):
         super().__init__(name, type, size)
         self.__nb_canons = int(nb_canons)
         self.__max_canons = max_canons
-    
+
+    # Définition des getters
     def getCanons(self):
         return self.__nb_canons
     def getMaxCanons(self):
         return self.__max_canons
     
+    # Définition des setters
     def setCanons(self, new_canons):
         if new_canons <= self.__max_canons:
             self.__nb_canons = new_canons
